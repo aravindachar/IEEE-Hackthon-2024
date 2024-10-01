@@ -1,0 +1,73 @@
+*{
+    margin:0px;
+    border:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+    background-color: #d6ccc2;
+}
+
+.tourist-places{
+    padding:2%;
+    width:100%;  
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.card-instance{
+    border: 5px red bold;
+    height:500px;
+    width:45%;
+    display: flex;
+    flex-direction: column;
+    background-color: #f5ebe0;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 10px;
+}
+.box-heading{
+    height:27.3px;
+    width:100%;
+    font-size:21px;
+    font-weight:bold;
+    display: flex;
+    justify-content:center;
+    background-color: #f5ebe0;
+}
+.shop-now{
+    color: #007185;
+    font-size: 13px;
+    display: flex;
+    width:270.75px;
+    justify-content:left;
+}
+
+.kerala-pic,.andaman-pic,.goa-pic,.kashmir-pic,.rajasthan-pic,.ooty-pic{
+    width:270.750px;
+    height:303.703px;
+    background-size: cover;
+    display:flex;
+    /* border-radius: 5px; */
+
+}
+.andaman-pic{
+    background-image: url('images/8e916f3d-d627-43ae-8814-1efe336b2a2b.jpeg');
+}
+.kerala-pic{
+    background-image: url('images/goa.jpeg');
+}
+.goa-pic{
+    background-image: url('images/Ross island.jpeg');
+}
+.kashmir-pic{
+    background-image: url('images/Visit kashmir with us.jpeg');
+}
+.rajasthan-pic{
+    background-image: url('images/rajasthan.jpeg');
+}
+.ooty-pic{
+    background-image: url('images/ooty.jpeg');
+}
+p{
+    width:400px;
+    background-color: #f5ebe0;
+}

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        #logo-img {
+            padding-left: 10px;
+            height: 70px;
+        }
+
+        .nav-bar {
+            background-color: lightgray;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .right-links {
+            display: flex;
+            align-items: center;
+            padding-right: 10px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .right-links a {
+            text-decoration: none;
+            color: blue;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .main {
+            padding-left: 20px;
+        }
+
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 10px 0;
+            width: 300px;
+            background-color: #f9f9f9;
+        }
+
+        .card h3 {
+            margin: 0 0 10px;
+        }
+
+        .card.red {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-bar">
+        <img src="css\B.png" alt="" id="logo-img">
+        <div class="right-links">
+            <a href="home.html">Home</a>
+            <a href="Content.html">Packages</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </div>
+
+    <div class="main">
+        <h1>Backpacking India Assurance+</h1>
+        <form id="guideForm">
+            <label for="name">Guide Name: </label>
+            <select name="name" id="guideName">
+                <option value="0">Select one</option>
+                <option value="Veeresh">Veeresh</option>
+                <option value="Gangamma">Gangamma</option>
+                <option value="John">John</option>
+                <option value="Vijay">Vijay</option>
+            </select>
+            <br><br>
+            <label for="rating">Rating out of 10</label>
+            <input type="number" name="rating" id="guideRating">
+            <br><br>
+            <label for="desc">Describe your experience: </label>
+            <textarea name="descp" id="guideExperience"></textarea>
+            <br><br>
+            <label>Faced any kind of misbehaviour?</label>
+            <input type="radio" name="misbehaviour" value="Yes">Yes
+            <input type="radio" name="misbehaviour" value="No">No
+            <br><br>
+            <button type="button" onclick="addGuide()">Submit</button>
+        </form>
+
+        <h2>Submitted Guides</h2>
+        <div id="guidesContainer"></div>
+    </div>
+
+    <script>
+        function addGuide() {
+            const guideName = document.getElementById('guideName').value;
+            const guideRating = document.getElementById('guideRating').value;
+            const guideExperience = document.getElementById('guideExperience').value;
+            const misbehaviour = document.querySelector('input[name="misbehaviour"]:checked') ? document.querySelector('input[name="misbehaviour"]:checked').value : 'No';
+
+            // Check if a valid guide is selected
+            if (guideName === "0") {
+                alert('Please select a guide');
+                return;
+            }
+
+            // Check if a card for the guide already exists
+            const existingCard = document.getElementById(guideName);
+
+            if (existingCard) {
+                // Update the existing card
+                existingCard.innerHTML = `
+                    <h3>Guide: ${guideName}</h3>
+                    <p>Rating: ${guideRating}/10</p>
+                    <p>Experience: ${guideExperience}</p>
+                    <p>Misbehaviour: ${misbehaviour}</p>
+                `;
+                // Change the background to red if misbehaviour is "Yes"
+                existingCard.className = `card ${misbehaviour === 'Yes' ? 'red' : ''}`;
+            } else {
+                // Create a new card for the guide
+                const guideCard = document.createElement('div');
+                guideCard.id = guideName; // Use guide name as the id to prevent duplicates
+                guideCard.className = `card ${misbehaviour === 'Yes' ? 'red' : ''}`;
+                guideCard.innerHTML = `
+                    <h3>Guide: ${guideName}</h3>
+                    <p>Rating: ${guideRating}/10</p>
+                    <p>Experience: ${guideExperience}</p>
+                    <p>Misbehaviour: ${misbehaviour}</p>
+                `;
+                // Append the card to the guides container
+                document.getElementById('guidesContainer').appendChild(guideCard);
+            }
+
+            // Reset the form
+            document.getElementById('guideForm').reset();
+        }
+    </script>
+</body>
+</html>
